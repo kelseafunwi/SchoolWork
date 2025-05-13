@@ -33,28 +33,33 @@
         .platform-description p {
             margin-bottom: 15px;
         }
+
+        .bg-blue {
+            background-color: blue !important;
+        }
     </style>
+    <script src="jquery.min.js"></script>
 </head>
 <body>
     <header>
-        <nav>
+        <nav id="navbar">
             <div class="nav-container">
                 <div class="logo_text">
-                    Kitchen 
+                    Kitchen
                 </div>
                 <ul style="margin-left: auto" class="nav-list">
                      <li>
                          <a class="active" href="index.html">Home</a>
                      </li>
+                    <li>
+                        <a href="our-store.html">Our Store</a>
+                    </li>
                      <li>
                          <a href="about.html">About</a>
                      </li>
                      <li>
                           <a href="contact.html">Contact</a>
                      </li>
-                     <li>
-                        <a href="our-store.html">Our Store</a>
-                   </li>
                    <li>
                      <a href="review.html">Review</a>
                     </li>
@@ -93,6 +98,8 @@
             </ul>
             
             <p>Whether you're a beginner looking to learn the basics or an experienced cook seeking new inspiration, Kitchen provides the tools and community support you need to enhance your culinary journey.</p>
+
+            <p  class="select-text ">Selected TExt</p>
         </div>
     </section>
     <article>
@@ -105,8 +112,22 @@
         <div style="margin-left: auto" class="">
             Email: funwikelsea@gmail.com
             <br />
-            Location: Buea
+            <div class="location">Location: Buea</div>
         </div>
     </footer>
+    <script>
+       $(document).ready(function(){
+           // select all the p elements
+           const paragraphs = $('p');
+
+           // select 2 id
+           const descriptionSection = $('#description-section');
+           const navbar = $('#navbar');
+
+           // select 2 classes
+           $('.select-text').addClass('bg-blue');
+           $('.location').addClass('bg-blue');
+       });
+    </script>
 </body>
 </html>

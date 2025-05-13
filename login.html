@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+    <style>
+        .platform-description {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .platform-description h2 {
+            color: blue;
+            margin-bottom: 15px;
+        }
+
+
+        .platform-description li {
+            background-color: blue;
+            margin-bottom: 15px;
+            margin-right: 20px;
+            color: white;
+            border-radius: 20px;
+        }
+
+        .platform-description p {
+            margin-bottom: 15px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid black;
+            width: 50%;
+            padding: 100px;
+            border-radius: 16px;
+        }
+
+        .login-form input {
+            width: 100%;
+            margin: 10px 0px;
+            padding: 10px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+        }
+
+        .login-form button {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .error {
+            width: 100%;
+            margin: 10px 0px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: rgba(255, 0, 0, 0.55);
+            color: white;
+        }
+
+        .success {
+            width: 100%;
+            margin: 10px 0px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #9eff00;
+            color: white;
+        }
+
+        .d-none {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo_text">
+                    Kitchen
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <section id="login">
+        <div class="form-container">
+            <div class="login-form">
+                <div id="error" class="error d-none">
+
+                </div>
+
+                <div id="success" class="success d-none">
+
+                </div>
+
+               <div class="form-group">
+                   <label for="name">Name</label>
+                   <input type="text" name="email" id="name" placeholder="Enter name" required>
+               </div>
+
+                <div class="form-group">
+                   <label for="email">Email address</label>
+                   <input type="email" name="email" id="email" placeholder="Enter email" required>
+               </div>
+
+               <div class="form-group">
+                   <label for="password">Password</label>
+                   <input type="password" name="password" id="password" placeholder="Enter password">
+               </div>
+
+                <button id="submitButton">Login</button>
+            </div>
+        </div>
+    </section>
+
+
+    <footer id="footer" style="position:fixed; left: 0; bottom: 0; width: 100%;">
+        <div>
+            FashionX
+        </div>
+        <div style="margin-left: auto" class="">
+            Email: funwikelsea@gmail.com
+            <br />
+            Location: Buea
+        </div>
+    </footer>
+
+    <script>
+        const emailElement = document.getElementById("email");
+        const passwordElement = document.getElementById("password");
+        const errorElement = document.getElementById("error");
+        const successElement = document.getElementById("success");
+        const button = document.getElementById('submitButton');
+
+        function submitForm() {
+            const email = emailElement.value;
+            const password = passwordElement.value;
+
+            if (email.trim() === "") {
+                errorElement.innerHTML = "Email cannot be empty.";
+                errorElement.classList.remove("d-none");
+            } else if (password.trim() === "") {
+                errorElement.innerHTML = "Password cannot be empty.";
+                errorElement.classList.remove("d-none");
+            } else if (password.trim().length < 8) {
+                errorElement.innerHTML = "Password cannot be less than 8 characters.";
+                errorElement.classList.remove("d-none");
+            } else {
+                errorElement.innerHTML = "";
+                errorElement.classList.add("d-none");
+
+                successElement.innerHTML = "Login Successful!";
+                successElement.classList.remove("d-none");
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 2000);
+
+                localStorage.setItem('logged-in', 'logged-in');
+
+                window.location.href = "our-store.html";
+            }
+        }
+
+        button.addEventListener('click', submitForm)
+    </script>
+</body>
+</html>

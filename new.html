@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="paragraph">Paragraph Value</p>
+    <p id="message">Message Value</p>
+    <button id="show">Make the images appear</button>
+    <button id="hide">Hide the images</button><br />
+    <img src="./new_month.jpg">
+    <img src="./njeiforbi.png">
+    <img src="./image.jpg">
+    <script src="jquery.min.js"></script>
+    <script>
+       $(function() {
+           $('#show').on('click', function() {
+               $('img').first().show('slow', function showNextOne() {
+                   $(this).next('img').show('slow', showNextOne);
+               });
+           });
+           $('#hide').click(function() {
+               $('img').hide();
+           });
+
+           $('#paragraph').click(function () {
+               const date = new Date();
+               alert(date.toLocaleTimeString())
+           })
+       });
+    </script>
+</body>
+</html>

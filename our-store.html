@@ -123,5 +123,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const loggedIn = localStorage.getItem('logged-in');
+        if (loggedIn == null) {
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 </html>

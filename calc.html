@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap:10px;
+        }
+
+        button {
+            padding: 30px;
+            border-radius: 5px;
+            width: 30%;
+        }
+
+        .screen {
+            width: 100%;
+            padding: 50px;
+            font-size: 30px;
+            background-color: grey;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="screen">
+
+    <input value="" id="firstNumber" type="text">
+
+    <input value="" id="operation" type="text">
+
+    <input value="" id="secondNumber" type="text">
+
+    <div id="">
+        =
+    </div>
+
+    <input id="answer" type="text" />
+</div>
+
+<div class="grid ">
+    <button onclick="numberClick(1)">1</button>
+    <button  onclick="numberClick(2)">2</button>
+    <button  onclick="numberClick(3)">3</button>
+    <button  onclick="numberClick(4)">4</button>
+    <button onclick="numberClick(5)">5</button>
+    <button onclick="numberClick(6)">6</button>
+    <button onclick="numberClick(7)">7</button>
+    <button onclick="numberClick(8)">8</button>
+    <button onclick="numberClick(9)">9</button>
+    <button onclick="numberClick(0)">0</button>
+    <button onclick="opClick('+')">+</button>
+    <button onclick="opClick('-')">-</button>
+    <button onclick="opClick('*')">*</button>
+    <button onclick="opClick('%')">/</button>
+    <button onclick="clearValue()">CLEAR</button>
+    <button onclick="equal()">=</button>
+</div>
+
+<script>
+    let firstNumber = null;
+    let secondNumber = null;
+    let operation = null;
+    let answer = null;
+
+    // elements
+    const firstNumberElement = document.getElementById('firstNumber');
+    const secondNumberElement = document.getElementById('secondNumber');
+    const operationElement = document.getElementById('operation');
+    const answerElement = document.getElementById('answer');
+
+    function numberClick(number) {
+        if (firstNumber === null) {
+            firstNumber = number;
+            firstNumberElement.value = number;
+        } else {
+            secondNumber = number;
+            secondNumberElement.value = number;
+        }
+    }
+
+    function clearValue() {
+        firstNumber = secondNumber = null;
+        firstNumberElement.value = null;
+        secondNumber = secondNumber = null;
+        operationElement.value = null;
+        answerElement.value = null;
+    }   secondNumberElement.value = null;
+
+    function opClick(operator) {
+        operation = operator;
+        operationElement.value = operator;
+    }
+
+    function equal() {
+        if (firstNumber != null && secondNumber != null && operation != null) {
+            switch (operation) {
+                case '+':
+                    answer = firstNumber + secondNumber;
+                    break;
+                case '-':
+                    answer = firstNumber - secondNumber;
+                    break;
+                case '*':
+                    answer = firstNumber * secondNumber;
+                    break;
+                case '/':
+                    answer = firstNumber / secondNumber;
+                    break;
+            }
+
+            answerElement.value = answer;
+        } else {
+            alert('you have filled one thing');
+        }
+    }
+</script>
+
+
+</body>
+</html>
